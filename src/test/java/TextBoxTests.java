@@ -8,9 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
-
+import static com.codeborne.selenide.Selenide.*;
 
 
 public class TextBoxTests {
@@ -27,18 +25,20 @@ public class TextBoxTests {
     void fillFormTest() {
 
         open("/automation-practice-form");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
         $("#firstName").setValue("Simon");
         $("#lastName").setValue("Job");
         $("#userEmail").setValue("simon@gmail.com");
-        $(byText("Male")).click();
+        $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("8005553535");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").$(byText("October")).click();
         $(".react-datepicker__year-select").$(byText("1947")).click();
         $(".react-datepicker__month").$(byText("15")).click();
         $("#subjectsInput").setValue("Maths").pressEnter();
-        $(byText("Sports")).click();
-        $(byText("Reading")).click();
+        $("#hobbiesWrapper").$(byText("Sports")).click();
+        $("#hobbiesWrapper").$(byText("Reading")).click();
         $("#uploadPicture").uploadFromClasspath("testPhoto.png");
         $("#currentAddress").setValue("Moscow street 1");
         $("#stateCity-wrapper").$(byText("Select State")).click();
