@@ -4,15 +4,13 @@ import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
 import pages.components.TableComponent;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationPage {
 
-    private SelenideElement firstNameInput = $("#firstName"),
+    private final SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmailInput = $("#userEmail"),
             genderWrapper = $("#genterWrapper"),
@@ -30,6 +28,11 @@ public class RegistrationPage {
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
+        return this;
+    }
+
+    public RegistrationPage removeBanner() {
+
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         return this;
@@ -77,12 +80,6 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setHobbies(String value) {
-        hobbiesInput.$(byText(value)).click();
-
-
-        return this;
-    }
 
     public RegistrationPage setHobbies(String value, String value2) {
         hobbiesInput.$(byText(value)).click();
@@ -91,13 +88,6 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setHobbies(String value, String value2, String value3) {
-        hobbiesInput.$(byText(value)).click();
-        hobbiesInput.$(byText(value2)).click();
-        hobbiesInput.$(byText(value3)).click();
-
-        return this;
-    }
 
     public RegistrationPage uploadPicture(String value) {
         uploadInput.uploadFromClasspath(value);
@@ -106,7 +96,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setCurrentAddress(String value) {
-        currentAddressInput.setValue("Moscow street 1");
+        currentAddressInput.setValue(value);
         return this;
     }
 
@@ -126,6 +116,7 @@ public class RegistrationPage {
 
         return this;
     }
+
     public RegistrationPage setWrongUserEmail(String value) {
         userEmailInput.setValue(value);
         return this;

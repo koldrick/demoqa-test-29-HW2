@@ -10,6 +10,7 @@ public class TextBoxTests extends TestBase {
     @Test
     void fillFormTest() {
         registrationPage.openPage()
+                .removeBanner()
                 .setFirstName("Simon")
                 .setLastName("Job")
                 .setUserEmail("simon@gmail.com")
@@ -38,6 +39,7 @@ public class TextBoxTests extends TestBase {
     @Test
     void fillNotFullFormTest() {
         registrationPage.openPage()
+                .removeBanner()
                 .setFirstName("Simon")
                 .setLastName("Job")
                 .setGender("Male")
@@ -55,6 +57,7 @@ public class TextBoxTests extends TestBase {
 
 
         registrationPage.openPage()
+                .removeBanner()
                 .setFirstName("Simon")
                 .setLastName("Job")
                 .setWrongUserEmail("simon@gmail")
