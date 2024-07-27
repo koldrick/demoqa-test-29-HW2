@@ -6,33 +6,37 @@ import pages.RegistrationPage;
 public class TextBoxTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
+    TestData testData = new TestData();
+
+
 
     @Test
     void fillFormTest() {
+
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName("Simon")
-                .setLastName("Job")
-                .setUserEmail("simon@gmail.com")
-                .setGender("Male")
-                .setUserNumber("8005553535")
-                .setDateOfBirth("31", "October", "1947")
-                .setSubjects("Maths")
-                .setHobbies("Sports", "Reading")
-                .uploadPicture("testPhoto.png")
-                .setCurrentAddress("Moscow street 1")
-                .setStateAndCity("NCR", "Delhi")
+                .setFirstName(testData.firstName)
+                .setLastName(testData.lastName)
+                .setUserEmail(testData.email)
+                .setGender(testData.gender)
+                .setUserNumber(testData.userNumber)
+                .setDateOfBirth(testData.dayOfBDay, testData.monthOfBDay, testData.yearOfBDay)
+                .setSubjects(testData.subject)
+                .setHobbies(testData.hobby)
+                .uploadPicture(testData.picturePath)
+                .setCurrentAddress(testData.address)
+                .setStateAndCity(testData.state, testData.city)
                 .clickSubmit()
-                .checkResult("Student Name", "Simon Job")
-                .checkResult("Student Email", "simon@gmail.com")
-                .checkResult("Gender", "Male")
-                .checkResult("Mobile", "8005553535")
-                .checkResult("Date of Birth", "31 October,1947")
-                .checkResult("Subjects", "Maths")
-                .checkResult("Hobbies", "Sports, Reading")
-                .checkResult("Picture", "testPhoto.png")
-                .checkResult("Address", "Moscow street 1")
-                .checkResult("State and City", "NCR Delhi");
+                .checkResult("Student Name", testData.firstName + " " + testData.lastName)
+                .checkResult("Student Email", testData.email)
+                .checkResult("Gender", testData.gender)
+                .checkResult("Mobile", testData.userNumber)
+                .checkResult("Date of Birth", testData.dayOfBDay + " " + testData.monthOfBDay + "," + testData.yearOfBDay)
+                .checkResult("Subjects", testData.subject)
+                .checkResult("Hobbies", testData.hobby)
+                .checkResult("Picture", testData.picturePath)
+                .checkResult("Address", testData.address)
+                .checkResult("State and City", testData.state + " " + testData.city);
     }
 
 
@@ -40,16 +44,16 @@ public class TextBoxTests extends TestBase {
     void fillNotFullFormTest() {
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName("Simon")
-                .setLastName("Job")
-                .setGender("Male")
-                .setUserNumber("8005553535")
-                .setDateOfBirth("31", "October", "1947")
+                .setFirstName(testData.firstName)
+                .setLastName(testData.lastName)
+                .setGender(testData.gender)
+                .setUserNumber(testData.userNumber)
+                .setDateOfBirth(testData.dayOfBDay, testData.monthOfBDay, testData.yearOfBDay)
                 .clickSubmit()
-                .checkResult("Student Name", "Simon Job")
-                .checkResult("Gender", "Male")
-                .checkResult("Mobile", "8005553535")
-                .checkResult("Date of Birth", "31 October,1947");
+                .checkResult("Student Name", testData.firstName + " " + testData.lastName)
+                .checkResult("Gender", testData.gender)
+                .checkResult("Mobile", testData.userNumber)
+                .checkResult("Date of Birth", testData.dayOfBDay + " " + testData.monthOfBDay + "," + testData.yearOfBDay);
     }
 
     @Test
@@ -58,12 +62,12 @@ public class TextBoxTests extends TestBase {
 
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName("Simon")
-                .setLastName("Job")
-                .setWrongUserEmail("simon@gmail")
-                .setGender("Male")
-                .setUserNumber("8005553535")
-                .setDateOfBirth("31", "October", "1947")
+                .setFirstName(testData.firstName)
+                .setLastName(testData.lastName)
+                .setWrongUserEmail(testData.wrongEmail)
+                .setGender(testData.gender)
+                .setUserNumber(testData.userNumber)
+                .setDateOfBirth(testData.dayOfBDay, testData.monthOfBDay, testData.yearOfBDay)
                 .clickSubmit()
                 .checkNegativeResult();
     }

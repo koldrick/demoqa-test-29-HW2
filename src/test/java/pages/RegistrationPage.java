@@ -81,9 +81,8 @@ public class RegistrationPage {
     }
 
 
-    public RegistrationPage setHobbies(String value, String value2) {
+    public RegistrationPage setHobbies(String value) {
         hobbiesInput.$(byText(value)).click();
-        hobbiesInput.$(byText(value2)).click();
 
         return this;
     }
@@ -132,10 +131,8 @@ public class RegistrationPage {
     }
 
 
-    public RegistrationPage checkNegativeResult() {
+    public void checkNegativeResult() {
         $(".table-responsive").shouldNotBe(visible);
-
-        return this;
 
     }
 
