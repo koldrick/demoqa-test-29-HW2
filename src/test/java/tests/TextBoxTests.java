@@ -14,7 +14,6 @@ public class TextBoxTests extends TestBase {
     TestData testData = new TestData();
 
 
-
     @Test
     void fillFormTest() {
         step("Open form", () -> {
