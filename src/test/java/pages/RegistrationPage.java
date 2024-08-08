@@ -39,35 +39,42 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setFirstName(String value) {
+        firstNameInput.scrollTo();
         firstNameInput.setValue(value);
         return this;
     }
 
     public RegistrationPage setLastName(String value) {
+
+        lastNameInput.scrollTo();
         lastNameInput.setValue(value);
         return this;
 
     }
 
     public RegistrationPage setUserEmail(String value) {
+        userEmailInput.scrollTo();
         userEmailInput.setValue(value);
         return this;
 
     }
 
     public RegistrationPage setGender(String value) {
+        genderWrapper.scrollTo();
         genderWrapper.$(byText(value)).click();
         return this;
 
     }
 
     public RegistrationPage setUserNumber(String value) {
+        userNumberInput.scrollTo();
         userNumberInput.setValue(value);
         return this;
 
     }
 
     public RegistrationPage setDateOfBirth(String day, String month, String year) {
+        calendarInput.scrollTo();
         calendarInput.click();
         calendarComponent.setDate(day, month, year);
 
@@ -75,6 +82,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setSubjects(String value) {
+        subjectsInput.scrollTo();
         subjectsInput.setValue(value).pressEnter();
 
         return this;
@@ -82,6 +90,7 @@ public class RegistrationPage {
 
 
     public RegistrationPage setHobbies(String value) {
+        hobbiesInput.scrollTo();
         hobbiesInput.$(byText(value)).click();
 
         return this;
@@ -89,17 +98,20 @@ public class RegistrationPage {
 
 
     public RegistrationPage uploadPicture(String value) {
+        uploadInput.scrollTo();
         uploadInput.uploadFromClasspath(value);
 
         return this;
     }
 
     public RegistrationPage setCurrentAddress(String value) {
+        currentAddressInput.scrollTo();
         currentAddressInput.setValue(value);
         return this;
     }
 
     public RegistrationPage setStateAndCity(String value, String value2) {
+        stateAndCityInput.scrollTo();
         stateAndCityInput.$(byText("Select State")).click();
         stateAndCityInput.$(byText(value)).click();
         stateAndCityInput.$(byText("Select City")).click();
@@ -111,12 +123,14 @@ public class RegistrationPage {
     }
 
     public RegistrationPage clickSubmit() {
+        submitButton.scrollTo();
         submitButton.click();
 
         return this;
     }
 
     public RegistrationPage setWrongUserEmail(String value) {
+        userEmailInput.scrollTo();
         userEmailInput.setValue(value);
         return this;
 
@@ -124,6 +138,7 @@ public class RegistrationPage {
 
 
     public RegistrationPage checkResult(String key, String value) {
+        tableComponent.table(key, value);
         tableComponent.table(key, value);
 
         return this;
