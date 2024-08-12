@@ -14,7 +14,7 @@ public class TextBoxTests extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     TestData testData = new TestData();
 
-
+    @Tag("smoke")
     @Test
     void fillFormTest() {
         step("Open form", () -> {
@@ -51,7 +51,7 @@ public class TextBoxTests extends TestBase {
         });
     }
 
-
+    @Tag("smoke")
     @Test
     void fillNotFullFormTest() {
         step("Open form", () -> {
